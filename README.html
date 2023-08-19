@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>&#x5173;&#x4e8e; ClassBoardSharp</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="关于-classboardsharp">关于 ClassBoardSharp</h1>
+<p><img src="https://img.shields.io/badge/.NET_Framework-@4.6.1-green.svg?logo=dotnet" alt=""> <a href="https://candlest.github.io/ClassBoard-F8/"><img src="https://img.shields.io/badge/Web_DEMO-@Candlest/ClassBoard_F8-red.svg?logo=githubpages" alt=""></a></p>
+<p>ClassBoardSharp 是 <a href="https://github.com/Candlest/ClassBoard">ClassBoard</a> 的二代版本，是一款使用 CefSharp 开发的，针对SEEWO及其教学一体机设计的，用于显示教学信息的壁纸软件。</p>
+<p>ClassBoardSharp相对 ClassBoard 一代的缺点：</p>
+<ul>
+<li>软件<strong>大</strong>了（50MB → 225MB）；</li>
+<li>占用<strong>大</strong>了（Win GDT → Chromium Blink）；</li>
+<li>启动<strong>慢</strong>了（在希沃 H84 开机实测中：无感知地开机启动 → 需要3-5s才能将页面加载完毕）</li>
+</ul>
+<p>ClassBoardSharp相对 ClassBoard 一代的优点，是采用 HTML/JS/CSS 构建页面：</p>
+<ul>
+<li>页面可<strong>几乎完全定制</strong></li>
+<li>页面可<strong>随时修改</strong></li>
+<li>更<strong>方便</strong>、更<strong>自由</strong>地写出更好看的页面</li>
+</ul>
+<h2 id="运行演示">运行演示</h2>
+<p>在浏览器中预览：<a href="https://candlest.github.io/ClassBoard-F8/">https://candlest.github.io/ClassBoard-F8/</a></p>
+<p>在Windows上的运行截图：
+<img src="file:///d:\Github\ClassBoardSharp\README\Desktop_demo.png" alt="Desktop_demo.png">
+<a href="https://github.com/Candlest/ClassBoard-F8">ClassBoard-F8</a>运行截图：
+<img src="file:///d:\Github\ClassBoardSharp\README\Web_demo.png" alt="Web_demo.png"></p>
+<hr>
+<p><strong>README 目录</strong></p>
+<ul>
+<li><a href="#%E5%85%B3%E4%BA%8E-classboardsharp">关于 ClassBoardSharp</a>
+<ul>
+<li><a href="#%E8%BF%90%E8%A1%8C%E6%BC%94%E7%A4%BA">运行演示</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B">使用教程</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E7%A8%8B%E5%BA%8F">获取程序</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F">运行程序</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E7%A8%8B%E5%BA%8F%E5%88%B0%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E9%A1%B9">添加程序到开机启动项</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8">设置开机自启动</a></li>
+<li><a href="#%E5%85%B3%E9%97%AD%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8">关闭开机自启动</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2">修改页面</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%AF%BE%E8%A1%A8%E5%80%92%E8%AE%A1%E6%97%A5%E5%B8%83%E5%91%8A%E6%A0%8F%E5%86%85%E5%AE%B9">添加课表、倒计日、布告栏内容</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E8%83%8C%E6%99%AF%E9%A1%B5%E9%9D%A2">修改背景页面</a></li>
+<li><a href="#%E9%81%87%E5%88%B0bug%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">遇到Bug的解决方案</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%99%84%E5%BD%95">附录</a>
+<ul>
+<li><a href="#%E5%85%B3%E9%97%AD%E5%86%B0%E7%82%B9%E8%BF%98%E5%8E%9F">关闭冰点还原</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%B8%E5%85%B3-efforts">相关 Efforts</a></li>
+<li><a href="#%E8%B4%A1%E7%8C%AE%E8%80%85">贡献者</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="使用教程">使用教程</h2>
+<p>项目结构：</p>
+<pre><code class="language-treeview">.
+├── Background
+├── README.html
+├── events.txt
+├── schedule.txt
+├── board.txt
+└── ClassBoard.exe
+</code></pre>
+<h3 id="获取程序">获取程序</h3>
+<p>从 GitHub 的 <a href="https://github.com/Candlest/ClassBoardSharp/releases">Release 页面</a> 下载</p>
+<h3 id="运行程序">运行程序</h3>
+<p>解压压缩包至文件夹。</p>
+<p>双击运行程序<code>ClassBoard.exe</code>，即可加载<code>Background/main.html</code>为桌面背景。</p>
+<h3 id="添加程序到开机启动项">添加程序到开机启动项</h3>
+<blockquote>
+<p>⚠️ 请确认一体机是否开启冰点还原功能，如有则请在<u>征得管理员同意下</u>关闭，才能添加启动项。</p>
+<p>关于冰点还原的关闭，参考<a href="#%E5%85%B3%E9%97%AD%E5%86%B0%E7%82%B9%E8%BF%98%E5%8E%9F">关闭冰点还原</a>一节。</p>
+</blockquote>
+<h4 id="设置开机自启动">设置开机自启动</h4>
+<p>已集成至设置页面。</p>
+<p>第一步： 按下“打开启动项文件夹“按钮，此时本程序快捷方式已经自动复制到剪切板中；</p>
+<p>第二步：在启动项文件夹中右键粘贴快捷方式至文件夹中；</p>
+<h4 id="关闭开机自启动">关闭开机自启动</h4>
+<p>第一步： 按下“打开启动项文件夹“按钮；</p>
+<p>第二步：在启动项文件夹中删除本程序的快捷方式；</p>
+<p>打开任务管理器选择<code>启动</code>选项卡或者运行<code>msconfig</code>，可以看到我们刚刚添加的启动项。</p>
+<h3 id="修改页面">修改页面</h3>
+<h4 id="添加课表倒计日布告栏内容">添加课表、倒计日、布告栏内容</h4>
+<p>在托盘中点击<code>setting</code>按钮进入设置界面，或者手动修改下面的文件：</p>
+<blockquote>
+<p>为尽量减少迁移成本，<code>class.js</code>和<code>event_cal.js</code>中<code>source</code>和<code>source_cal</code>与原先<code>kb.csv</code>和<code>djr.csv</code> <s>一致</s> 大致一致。
+（因为原来的行与行之间需要用**英语半角逗号 ‘,’**替代）</p>
+<p>同时注意，所有的逗号请使用英文半角符号的逗号，是 <code>,</code> 而不是<code>，</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schedule.txt</td>
+<td>第一行是表头，请勿修改。<br>目前。仅支持每天 1+5+3+2=11 节课，按照省实2024届的高三课表识别当前课程。<br>如果你有其他需求，暂时需要修改 Background/js/class.js 来实现，需要 javascript 和 HTML 相关基础。</td>
+</tr>
+<tr>
+<td>events.txt</td>
+<td>第一行是表头，请勿修改。<br>请按照：“事件，日期” 的格式添加条目。<br>e.g. 高考, 2024-06-07</td>
+</tr>
+<tr>
+<td>board.txt</td>
+<td>可以包含html标签，如&lt;strong&gt;,&lt;ins&gt;, &lt;del&gt;等。<br>换行符请使用&lt;br/&gt; 标签。<br>e.g:<br> 本周背诵：<br/>《梦游天姥吟留别》《赤壁赋》</td>
+</tr>
+</tbody>
+</table>
+<p>修改以后，请在托盘中点击<code>restart</code>按钮重载应用。</p>
+<h4 id="修改背景页面">修改背景页面</h4>
+<p>修改背景图片以及其他样式，请至 Background/css/custom.css 。</p>
+<h4 id="遇到bug的解决方案">遇到Bug的解决方案</h4>
+<p>收集错误信息，在此项目下提出<code>issue</code>：<a href="https://github.com/Candlest/ClassBoardSharp/issues">Candlest/ClassBoardSharp</a> 。</p>
+<p>ClassBoardSharp 采用 C# .NET Framework 4.6.1 + CefSharp 编写，如遇错误请复制 .NET Framework 的报错信息。</p>
+<p>Background/ 部分采用 HTML/JS/CSS 编写，由着前端能跑就行，从不<code>panic</code>的习惯，如果页面的渲染出现了一些奇奇怪怪的Bug，建议使用Chrome的开发者模式Debug 。</p>
+<blockquote>
+<p>⚠ 由于读取课表、日历和布告栏采用 CefSharp 传参的方式，若要在 Chrome 运行则需要对 <code>Background/js/</code> 下文件进行修改</p>
+</blockquote>
+<p>打开目录<code>Background/js/</code>：</p>
+<pre><code class="language-treeview">./Background/js
+├── class.js
+├── event_cal.js
+├── help.js
+└── main.js
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>备注</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class.js</td>
+<td>修改其中source变量内容</td>
+<td>schedule.txt</td>
+</tr>
+<tr>
+<td>event_cal.js</td>
+<td>修改其中source_cal变量内容</td>
+<td>events.txt</td>
+</tr>
+<tr>
+<td>help.js</td>
+<td>修改其中source_str变量内容</td>
+<td>board.txt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="附录">附录</h2>
+<h3 id="关闭冰点还原">关闭冰点还原</h3>
+<blockquote>
+<p>⚠️ 建议备份相关文件</p>
+</blockquote>
+<p>要删除冰点还原，需要在PE环境（或者安全模式）下，删除以下文件：</p>
+<ul>
+<li><code>C:\Program Files (x86)\Seewo\SeewoService\SeewoService_1.3.6.3254</code>里的<code>SeewoFreeze</code></li>
+<li><code>C:\ProgramData</code>里的文件夹<code>SeewoFreeze</code>， <code>SeewoFreezeConfig</code> 和 <code>SeewoFreezeKernelConfig</code></li>
+<li><code>C:\ProgramData\Seewo</code>里的<code>Freeze</code></li>
+</ul>
+<p>如果想恢复冰点，可以重新安装 Seewo 管家。</p>
+<h2 id="相关-efforts">相关 Efforts</h2>
+<p>本项目是对前辈 ClassTool 的拙劣模仿。 ClassTool 使用 Electron + Vue.JS 构建。</p>
+<blockquote>
+<h4 id="classtool"><a href="https://github.com/IcariaWorks/ClassTools">ClassTool</a></h4>
+<p>一个用在班级电脑上面的动态壁纸系统，显示高考倒计时、作业、课程表、值日生等</p>
+</blockquote>
+<p>非常感谢 CefSharp 提供平滑的 .NET + CEF 开发体验。</p>
+<blockquote>
+<h4 id="cefsharp"><a href="https://github.com/cefsharp/CefSharp">CefSharp</a></h4>
+<p>.NET (WPF and Windows Forms) bindings for the Chromium Embedded Framework</p>
+</blockquote>
+<h2 id="贡献者">贡献者</h2>
+<p>感谢参与测试、提供修改建议，参与代码修改的八班九班同学！</p>
+<p>尤其是 <a href="https://github.com/Candlest">@Candlest</a> 和 <a href="https://github.com/mike-unk">@mike-unk</a> 以及 <a href="https://github.com/e7g">@E7G</a> 同学！</p>
+<p>欢迎任何的贡献！</p>
+<h2 id="license"><a href="https://github.com/Candlest/ClassBoard#license"></a>License</h2>
+<p>本项目使用 <strong>MIT License</strong> 开源。</p>
+
+        
+        
+    </body>
+    </html>

@@ -77,7 +77,7 @@ namespace ClassBoard
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(String.Format("{0}\\README.pdf", AppDomain.CurrentDomain.BaseDirectory));
+            System.Diagnostics.Process.Start(String.Format("{0}\\README.html", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)

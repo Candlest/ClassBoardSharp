@@ -1,6 +1,5 @@
 # 关于 ClassBoardSharp
-
-
+![](https://img.shields.io/badge/.NET_Framework-@4.6.1-green.svg?logo=dotnet) [![](https://img.shields.io/badge/Web_DEMO-@Candlest/ClassBoard_F8-red.svg?logo=githubpages)](https://candlest.github.io/ClassBoard-F8/)
 
 ClassBoardSharp 是 [ClassBoard](https://github.com/Candlest/ClassBoard) 的二代版本，是一款使用 CefSharp 开发的，针对SEEWO及其教学一体机设计的，用于显示教学信息的壁纸软件。
 
@@ -42,6 +41,9 @@ ClassBoardSharp相对 ClassBoard 一代的优点，是采用 HTML/JS/CSS 构建�
       - [遇到Bug的解决方案](#遇到bug的解决方案)
   - [附录](#附录)
     - [关闭冰点还原](#关闭冰点还原)
+  - [相关 Efforts](#相关-efforts)
+  - [贡献者](#贡献者)
+  - [License](#license)
 
 
 ## 使用教程
@@ -152,3 +154,29 @@ Background/ 部分采用 HTML/JS/CSS 编写，由着前端能跑就行，从不`
 - `C:\ProgramData\Seewo`里的`Freeze`
 
 如果想恢复冰点，可以重新安装 Seewo 管家。
+
+## 相关 Efforts
+
+本项目是对前辈 ClassTool 的拙劣模仿。 ClassTool 使用 Electron + Vue.JS 构建。
+
+> #### [ClassTool](https://github.com/IcariaWorks/ClassTools)
+> 
+> 一个用在班级电脑上面的动态壁纸系统，显示高考倒计时、作业、课程表、值日生等
+
+非常感谢 CefSharp 提供平滑的 .NET + CEF 开发体验。
+
+> #### [CefSharp](https://github.com/cefsharp/CefSharp)
+>
+>.NET (WPF and Windows Forms) bindings for the Chromium Embedded Framework
+
+## 贡献者
+
+感谢参与测试、提供修改建议，参与代码修改的八班九班同学！
+
+尤其是 [@Candlest](https://github.com/Candlest) 和 [@mike-unk](https://github.com/mike-unk) 以及 [@E7G](https://github.com/e7g) 同学！
+
+欢迎任何的贡献！
+
+## [](https://github.com/Candlest/ClassBoard#license)License
+
+本项目使用 **MIT License** 开源。
