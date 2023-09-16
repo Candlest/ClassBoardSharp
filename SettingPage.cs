@@ -21,18 +21,16 @@ namespace ClassBoard
 
         private void SettingPage_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Hide();
-            e.Cancel = true;
         }
 
         private void SettingPage_Load(object sender, EventArgs e)
         {
-            pfc = new PrivateFontCollection();
-            pfc.AddFontFile("LXGWWenKaiGBScreenR.ttf");
-            this.Font = new Font(pfc.Families[0], 15);
-            this.textBox_board.Lines =  File.ReadAllLines("board.txt");
-            this.textBox_events.Lines = File.ReadAllLines("events.txt");
-            this.textBox_schedule.Lines = File.ReadAllLines("schedule.txt");
+            //pfc = new PrivateFontCollection();
+            //pfc.AddFontFile("LXGWWenKaiGBScreenR.ttf");
+            //this.Font = new Font(pfc.Families[0], 15);
+            this.textBox_board.Lines =  File.ReadAllLines("config/board.txt");
+            this.textBox_events.Lines = File.ReadAllLines("config/events.txt");
+            this.textBox_schedule.Lines = File.ReadAllLines("config/class.txt");
         }
 
         PrivateFontCollection pfc;
@@ -66,7 +64,7 @@ namespace ClassBoard
             {
                 VisitLink();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Unable to open link that was clicked.");
             }

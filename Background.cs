@@ -1,7 +1,10 @@
 ﻿using CefSharp;
+using CefSharp.WinForms;
+using ClassBoard.ClassBoardAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -26,10 +29,23 @@ namespace ClassBoard
 
         private void Background_Load(object sender, EventArgs e)
         {
+            var settings = new CefSettings()
+            {
+                LogFile = $"{AppDomain.CurrentDomain.BaseDirectory}\\log\\debug.log", //You can customise this path
+                LogSeverity = LogSeverity.Error // You can change the log level
+            };
+
+            //Perform dependency check to make sure all relevant resources are in our output directory.
+            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
+
             this.browser = new CefSharp.WinForms.ChromiumWebBrowser();
             CefSharpSettings.WcfEnabled = true;
             browser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
-            browser.JavascriptObjectRepository.Register("cef_obj", new JSObject(), isAsync: false, options: BindingOptions.DefaultBinder);
+            
+            //在这里塞API
+            browser.JavascriptObjectRepository.Register("cbio", new Cbio(), isAsync: false, options: BindingOptions.DefaultBinder);
+            browser.JavascriptObjectRepository.Register("cbsys", new Cbsys(), isAsync: false, options: BindingOptions.DefaultBinder);
+
             //From 设计器
             {
                 this.browser.ActivateBrowserOnCreation = false;
@@ -46,7 +62,7 @@ namespace ClassBoard
             this.Height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
             this.Width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
             this.Location = new Point(0, 0);
-            this.browser.LoadUrl(String.Format("file:///{0}/Background/main.html", AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/')));
+            this.browser.LoadUrl(String.Format("file:///{0}/Background/index.html", AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/')));
             //Load a different url
             IntPtr hProgman = DllImports.FindWindow("Progman", "Program Manager");
             DllImports.SendMessageTimeout(hProgman, 0x52c, 0, 0, 0, 100, out _);
@@ -70,53 +86,32 @@ namespace ClassBoard
 
         private void restartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            settingPage.Close();
             //notifyIcon.ShowBalloonTip(15, "Class Board", "Class Board 已重载", ToolTipIcon.Info);
             Application.Restart();
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(String.Format("{0}\\README.html", AppDomain.CurrentDomain.BaseDirectory));
+            var about = new AboutPage();
+            about.Show();
+            //System.Diagnostics.Process.Start(String.Format("{0}\\README.pdf", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            settingPage = new SettingPage();
             settingPage.Show();
-        //    //explorer
-        //    System.Diagnostics.Process.Start("explorer.exe", String.Format("{0}\\Background\\", System.IO.Directory.GetCurrentDirectory()));
-
-        //    /*告示牌 */
-        //    System.Diagnostics.Process.Start("notepad.exe", String.Format("{0}\\Background\\js\\help.js", System.IO.Directory.GetCurrentDirectory()));
-
-        //    /*倒计日*/
-        //    System.Diagnostics.Process.Start("notepad.exe", String.Format("{0}\\Background\\js\\event_cal.js", System.IO.Directory.GetCurrentDirectory()));
-
-        //    /*课表 */
-        //    System.Diagnostics.Process.Start("notepad.exe", String.Format("{0}\\Background\\js\\class.js", System.IO.Directory.GetCurrentDirectory()));
-        //
         }
 
-        private SettingPage settingPage;
+        private SettingPage settingPage = null;
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             contextMenuStrip.Show(Control.MousePosition.X, Control.MousePosition.Y);
         }
-    }
-    public class JSObject
-    {
-        public string getClass()
+
+        private void Background_FormClosed(object sender, FormClosedEventArgs e)
         {
-            return File.ReadAllText("schedule.txt");
-        }
-        public string getEvents()
-        {
-            return File.ReadAllText("events.txt");
-        }
-        public string getBoard()
-        {
-            return File.ReadAllText("board.txt");
         }
     }
 }
