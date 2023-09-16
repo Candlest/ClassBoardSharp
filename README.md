@@ -1,14 +1,17 @@
 # 关于 ClassBoardSharp
+
 ![](https://img.shields.io/badge/.NET_Framework-@4.6.1-green.svg?logo=dotnet) [![](https://img.shields.io/badge/Web_DEMO-@Candlest/ClassBoard_F8-red.svg?logo=githubpages)](https://candlest.github.io/ClassBoard-F8/)
 
 ClassBoardSharp 是 [ClassBoard](https://github.com/Candlest/ClassBoard) 的二代版本，是一款使用 CefSharp 开发的，针对SEEWO及其教学一体机设计的，用于显示教学信息的壁纸软件。
 
 ClassBoardSharp相对 ClassBoard 一代的缺点：
+
 - 软件**大**了（50MB → 225MB）；
 - 占用**大**了（Win GDT → Chromium Blink）；
 - 启动**慢**了（在希沃 H84 开机实测中：无感知地开机启动 → 需要3-5s才能将页面加载完毕）
 
 ClassBoardSharp相对 ClassBoard 一代的优点，是采用 HTML/JS/CSS 构建页面：
+
 - 页面可**几乎完全定制**
 - 页面可**随时修改**
 - 更**方便**、更**自由**地写出更好看的页面
@@ -18,10 +21,12 @@ ClassBoardSharp相对 ClassBoard 一代的优点，是采用 HTML/JS/CSS 构建�
 在浏览器中预览：https://candlest.github.io/ClassBoard-F8/
 
 在Windows上的运行截图：
+
+![breeze](./README/theme_breeze.png)
+
 ![Desktop_demo.png](./README/Desktop_demo.png)
 [ClassBoard-F8](https://github.com/Candlest/ClassBoard-F8)运行截图：
 ![Web_demo.png](./README/Web_demo.png)
-
 
 ---
 
@@ -44,7 +49,6 @@ ClassBoardSharp相对 ClassBoard 一代的优点，是采用 HTML/JS/CSS 构建�
   - [相关 Efforts](#相关-efforts)
   - [贡献者](#贡献者)
   - [License](#license)
-
 
 ## 使用教程
 
@@ -107,7 +111,7 @@ ClassBoardSharp相对 ClassBoard 一代的优点，是采用 HTML/JS/CSS 构建�
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
 | schedule.txt | 第一行是表头，请勿修改。<br>目前。仅支持每天 1+5+3+2=11 节课，按照省实2024届的高三课表识别当前课程。<br>如果你有其他需求，暂时需要修改 Background/js/class.js 来实现，需要 javascript 和 HTML 相关基础。 |
 | events.txt   | 第一行是表头，请勿修改。<br>请按照：“事件，日期” 的格式添加条目。<br>e.g. 高考, 2024-06-07                                                                           |
-| board.txt    | 可以包含html标签，如\<strong>,\<ins>, \<del>等。<br>换行符请使用\<br/> 标签。<br>e.g:<br> 本周背诵：<br/>《梦游天姥吟留别》《赤壁赋》                                                |
+| board.txt    | 可以包含html标签，如\<strong>,\<ins>, \<del>等。<br>换行符请使用\<br/> 标签。<br>e.g:<br> 本周背诵：<br/>《梦游天姥吟留别》《赤壁赋》                                       |
 
 修改以后，请在托盘中点击`restart`按钮重载应用。
 
@@ -166,8 +170,8 @@ Background/ 部分采用 HTML/JS/CSS 编写，由着前端能跑就行，从不`
 非常感谢 CefSharp 提供平滑的 .NET + CEF 开发体验。
 
 > #### [CefSharp](https://github.com/cefsharp/CefSharp)
->
->.NET (WPF and Windows Forms) bindings for the Chromium Embedded Framework
+> 
+> .NET (WPF and Windows Forms) bindings for the Chromium Embedded Framework
 
 ## 贡献者
 
