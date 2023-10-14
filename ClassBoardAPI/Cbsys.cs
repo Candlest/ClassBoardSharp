@@ -9,9 +9,8 @@ namespace ClassBoard.ClassBoardAPI
 {
     internal class Cbsys
     {
-        public void Message(string title, string context)
-        {
-            MessageBox.Show(title, context);
-        }
+        public void message(string title, string context) => MessageBox.Show(title, context);
+        public int getWidth() => System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+        public int getHeight() => System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
     }
 }

@@ -36,6 +36,7 @@
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer_task_view = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,13 +58,13 @@
             this.restartToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(215, 136);
+            this.contextMenuStrip.Size = new System.Drawing.Size(134, 108);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Image = global::ClassBoard.Properties.Resources.help_whatsthis;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.helpToolStripMenuItem.Text = "帮助(&H)";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
@@ -71,7 +72,7 @@
             // 
             this.settingToolStripMenuItem.Image = global::ClassBoard.Properties.Resources.tools;
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.settingToolStripMenuItem.Text = "设置(&S)";
             this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
@@ -79,7 +80,7 @@
             // 
             this.restartToolStripMenuItem.Image = global::ClassBoard.Properties.Resources.edit_reset;
             this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
-            this.restartToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.restartToolStripMenuItem.Text = "重启(&R)";
             this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
             // 
@@ -87,9 +88,13 @@
             // 
             this.exitToolStripMenuItem.Image = global::ClassBoard.Properties.Resources.application_exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.exitToolStripMenuItem.Text = "退出(&E)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // timer_task_view
+            // 
+            this.timer_task_view.Tick += new System.EventHandler(this.timer_task_view_Tick);
             // 
             // Background
             // 
@@ -116,5 +121,6 @@
         private System.Windows.Forms.ToolStripMenuItem restartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
+        private System.Windows.Forms.Timer timer_task_view;
     }
 }
