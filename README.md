@@ -1,5 +1,6 @@
 # 关于 ClassBoardSharp
 
+
 ![](https://img.shields.io/badge/.NET_Framework-@4.6.1-green.svg?logo=dotnet) [![](https://img.shields.io/badge/Web_DEMO-@Candlest/ClassBoard_F8-red.svg?logo=githubpages)](https://candlest.github.io/ClassBoard-F8/)
 
 ClassBoardSharp 是 [ClassBoard](https://github.com/Candlest/ClassBoard) 的二代版本，是一款使用 CefSharp 开发的，针对SEEWO及其教学一体机设计的，用于显示教学信息的壁纸软件。
