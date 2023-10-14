@@ -153,6 +153,7 @@ namespace ClassBoard
                 hasMess = true;
                 MessageBox.Show(this, "检测到壁纸接管失效，确认后重新接管壁纸", "Class Board");
                 initBackground();
+                hasMess = false;
             }
         }
 
