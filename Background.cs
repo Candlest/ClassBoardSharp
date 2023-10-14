@@ -62,18 +62,12 @@ namespace ClassBoard
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var about = new AboutPage();
-            about.Show();
-            //System.Diagnostics.Process.Start(String.Format("{0}\\README.pdf", AppDomain.CurrentDomain.BaseDirectory));
+            System.Diagnostics.Process.Start(String.Format("{0}\\README\\README.html", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this.Handle.ToString());
-            if(DllImports.GetParent(this.Handle) == programHandle)
-            {
-                MessageBox.Show("yes");
-            }
+            System.Diagnostics.Process.Start(ini);
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
