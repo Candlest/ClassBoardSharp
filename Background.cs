@@ -32,14 +32,17 @@ namespace ClassBoard
             var settings = new CefSettings()
             {
                 LogFile = $"{AppDomain.CurrentDomain.BaseDirectory}\\log\\debug.log", //You can customise this path
-                LogSeverity = LogSeverity.Error // You can change the log level
+                LogSeverity = LogSeverity.Error, // You can change the log level
             };
+            settings.DisableGpuAcceleration();
+            settings.RemoteDebuggingPort = 14241;
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
 
             this.browser = new CefSharp.WinForms.ChromiumWebBrowser();
             CefSharpSettings.WcfEnabled = true;
+            
             browser.JavascriptObjectRepository.Settings.LegacyBindingEnabled = true;
             
             //在这里塞API

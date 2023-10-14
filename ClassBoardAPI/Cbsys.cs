@@ -9,7 +9,7 @@ namespace ClassBoard.ClassBoardAPI
 {
     internal class Cbsys
     {
-        public void CreateMessageBox(string title, string context)
+        public void Message(string title, string context)
         {
             MessageBox.Show(title, context);
         }

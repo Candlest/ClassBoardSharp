@@ -28,28 +28,26 @@ namespace ClassBoard
             //pfc = new PrivateFontCollection();
             //pfc.AddFontFile("LXGWWenKaiGBScreenR.ttf");
             //this.Font = new Font(pfc.Families[0], 15);
-            this.textBox_board.Lines =  File.ReadAllLines("config/board.txt");
-            this.textBox_events.Lines = File.ReadAllLines("config/events.txt");
-            this.textBox_schedule.Lines = File.ReadAllLines("config/class.txt");
+            this.textBox_board.Lines =  File.ReadAllLines("Config/board.txt");
+            this.textBox_events.Lines = File.ReadAllLines("Config/events.txt");
+            this.textBox_schedule.Lines = File.ReadAllLines("Config/class.txt");
         }
-
-        PrivateFontCollection pfc;
 
         private void button_save_board_Click(object sender, EventArgs e)
         {
-            File.WriteAllLines("board.txt", textBox_board.Lines);
+            File.WriteAllLines("Config/board.txt", textBox_board.Lines);
             Message_OK();
         }
 
         private void button_save_events_Click(object sender, EventArgs e)
         {
-            File.WriteAllLines("events.txt", textBox_events.Lines);
+            File.WriteAllLines("Config/events.txt", textBox_events.Lines);
             Message_OK();
         }
 
         private void button_save_schedule_Click(object sender, EventArgs e)
         {
-            File.WriteAllLines("schedule.txt", textBox_schedule.Lines);
+            File.WriteAllLines("Config/class.txt", textBox_schedule.Lines);
             Message_OK();
         }
 
