@@ -1,0 +1,125 @@
+:root {
+  --spacing: 5px;
+}
+
+.ul {
+  align-items: center;
+}
+
+
+#time-a,
+#date-a,
+#week-a {
+  background-color: #3daee920;
+  font-size: xx-large;
+  --border-color: transparent;
+  border-radius: 10px;
+}
+
+#evcal {
+  margin-left: 20px;
+}
+
+#evcal>li {
+  list-style-type: '';
+  font-size: 60px;
+  /* margin: 0; */
+  /* padding: 0; */
+}
+
+
+.contrast {
+  font-size: 36px;
+  line-height: 30px;
+  height: 30px;
+  padding: 10%;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  font-weight: 450;
+  color: #fff;
+  border-radius: 10px;
+  background: transparent;
+  backdrop-filter: blur(12px);
+}
+
+
+.help {
+  column-count: 2;
+  column-gap: 40px;
+  column-rule-style: dotted;
+
+  /* Firefox */
+  -moz-column-count: 2;
+  -moz-column-gap: 40px;
+  -moz-column-rule-style: dotted;
+
+  /* Safari and Chrome */
+  -webkit-column-count: 2;
+  -webkit-column-gap: 40px;
+  -webkit-column-rule-style: dotted;
+}
+
+#classtable,
+#nav-pro {
+  background: transparent;
+  backdrop-filter: blur(12px);
+}
+
+article {
+  /*font-family: "Noto Serif CJK SC", serif;*/
+  max-width: 700px;
+  margin-left: auto;
+  /* background: transparent; */
+  /* backdrop-filter: blur(6px); */
+}
+
+/* article>header{
+  backdrop-filter: blur(72px);
+} */
+
+#clock-div {
+  margin: 0 auto
+}
+
+
+body {
+  background-image: url("wallpaper/kdelight.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1920px;
+  position: absolute;
+  height: 1080px;
+}
+
+
+main {
+  background: transparent;
+}
+
+strong {
+  font-size: 52px;
+  color: white;
+}
+
+mark {
+  font-size: 52px;
+  color: black;
+  border-radius: 10px;
+}
+
+article {
+  color: white;
+  font-size: 36px;
+  background: #31363d30;
+  border-radius: 25px;
+  backdrop-filter: blur(12px);
+}
+
+#helpart {
+  padding: 15px 30px;
+}
+
+body {
+  font-family: "HarmonyOS Sans", "HarmonyOS Sans SC", "Sarasa UI SC", "Segoe UI", sans-serif;
+}

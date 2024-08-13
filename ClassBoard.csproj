@@ -51,7 +51,9 @@
       <HintPath>packages\CefSharp.WinForms.109.1.110\lib\net452\CefSharp.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,10 +74,19 @@
     <Compile Include="ClassBoardAPI\Cbio.cs" />
     <Compile Include="ClassBoardAPI\Cbsys.cs" />
     <Compile Include="DLLImport.cs" />
+    <Compile Include="Forms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Background.resx">
       <DependentUpon>Background.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -87,6 +98,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Background\css\pico.css.map" />
+    <None Include="Config\config.ini" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -102,10 +115,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icons\application-exit.png" />
-    <Content Include="icons\edit-reset.png" />
-    <Content Include="icons\help-whatsthis.png" />
-    <Content Include="icons\tools.png" />
+    <Content Include="Background\css\custom.css" />
+    <Content Include="Background\css\pico.css" />
+    <Content Include="Background\css\wallpaper\kdedark.png" />
+    <Content Include="Background\css\wallpaper\kdelight.png" />
+    <Content Include="Background\index.html" />
+    <Content Include="Background\js\class.js" />
+    <Content Include="Background\js\event_cal.js" />
+    <Content Include="Background\js\help.js" />
+    <Content Include="Background\js\main.js" />
+    <Content Include="Background\settings.html" />
+    <Content Include="Config\board.txt" />
+    <Content Include="Config\class.txt" />
+    <Content Include="Config\events.txt" />
     <None Include="Resources\icon.ico" />
     <None Include="Resources\edit-reset.png" />
     <None Include="Resources\application-exit.png" />
@@ -124,4 +146,8 @@
     <Error Condition="!Exists('packages\CefSharp.Common.109.1.110\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\CefSharp.Common.109.1.110\build\CefSharp.Common.targets'))" />
   </Target>
   <Import Project="packages\CefSharp.Common.109.1.110\build\CefSharp.Common.targets" Condition="Exists('packages\CefSharp.Common.109.1.110\build\CefSharp.Common.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>

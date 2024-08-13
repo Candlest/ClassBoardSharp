@@ -1,0 +1,69 @@
+﻿<!doctype html>
+<html lang="zh" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/pico.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <title>Background</title>
+</head>
+
+<body style='overflow:scroll;overflow-x:hidden;overflow-y:hidden' id="body-html">
+    <main class="container-fluid">
+        <div id="glass">
+            <div class="grid" id="classtable">
+                <div id="c0">早读</div>
+                <div id="c1">第1节课</div>
+                <div id="c2">第2节课</div>
+                <div id="c3">第3节课</div>
+                <div id="c4">第4节课</div>
+                <div id="c5">第5节课</div>
+                <div id="c6">第6节课</div>
+                <div id="c7">第7节课</div>
+                <div id="c8">第8节课</div>
+                <div id="c9">晚修1</div>
+                <div id="c10">晚修2</div>
+            </div>
+            </nav>
+            <script src="js/class.js"></script>
+            <section>
+                <div class="grid">
+                    <div class="emtry"></div>
+                    <div>
+                        <article>
+                            <header hidden>
+                                <a href="#close" aria-label="Close" class="close"></a>
+                                ⏰ Clock
+                            </header>
+                            <div id="clock-div">
+                                <a id="time-a" href="#" role="button">Time</a>
+                                <a id="date-a" href="#" role="button">Date</a>
+                                <a id="week-a" href="#" role="button">Date</a>
+                            </div>
+                        </article>
+                        <article>
+                            <header hidden>
+                                <a href="#close" aria-label="Close" class="close"></a>
+                                📅 Events Calendar
+                            </header>
+                            <ul id="evcal">
+                            </ul>
+                        </article>
+                        <script src="js/event_cal.js"></script>
+                        <article id="helpart">
+                            <header hidden>
+                                <a href="#close" aria-label="Close" class="close"></a>
+                                📚 Billboard
+                            </header>
+                            <div id="help"></div>
+                        </article>
+                        <script src="js/help.js"></script>
+                    </div>
+                </div>
+            </section>
+    </main>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

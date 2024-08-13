@@ -1,6 +1,7 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
 using ClassBoard.ClassBoardAPI;
+using ClassBoard.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace ClassBoard
 {
     public partial class Background : Form
     {
+        private SettingsForm sf;
         private bool hasMess = false;
         private string ini;
         private IntPtr programHandle;
@@ -40,7 +42,7 @@ namespace ClassBoard
             this.Location = new Point(0, 0);
             // BackgroundUrl
             var BackgroundUrl = DllImports.IniReadValue("window", "BackgroundUrl", ini);
-            this.browser.LoadUrl(String.Format("file:///{0}{1}", AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/'), BackgroundUrl));
+            this.browser.LoadUrl(String.Format("file:///{0}{1}/index.html", AppDomain.CurrentDomain.BaseDirectory.Replace('\\', '/'), BackgroundUrl));
 
             if (Boolean.Parse(DllImports.IniReadValue("Fix_Task_View", "Timer", ini)))
             {
@@ -62,12 +64,13 @@ namespace ClassBoard
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(String.Format("{0}\\README\\README.chm", AppDomain.CurrentDomain.BaseDirectory));
+            System.Diagnostics.Process.Start("https://github.com/Candlest/ClassBoardSharp");
         }
 
         private void settingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(ini);
+            sf = new SettingsForm();
+            sf.Show();
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
