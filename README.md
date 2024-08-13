@@ -1,9 +1,44 @@
-# 关于 ClassBoardSharp
-
+<div align="center">
+  <img src="./Resources/icon.ico" alt="" width=320>
+  <p><strong>ClassBoard 是一款高自由度的，用于显示教学信息的壁纸软件，功能包括高考倒计时、公告栏、以及能够提示当前课程的课程表</strong></p></div>
 
 ![](https://img.shields.io/badge/.NET_Framework-@4.6.1-green.svg?logo=dotnet) [![](https://img.shields.io/badge/Web_DEMO-@Candlest/ClassBoard_F8-red.svg?logo=githubpages)](https://candlest.github.io/ClassBoard-F8/)
 
-ClassBoardSharp 是 [ClassBoard](https://github.com/Candlest/ClassBoard) 的二代版本，是一款使用 CefSharp 开发的，针对SEEWO及其教学一体机设计的，用于显示教学信息的壁纸软件。
+- [概览](#概览)
+  - [前世今生](#前世今生)
+- [运行演示](#运行演示)
+- [使用教程](#使用教程)
+  - [获取程序](#获取程序)
+  - [运行程序](#运行程序)
+- [配置教程](#配置教程)
+  - [修改页面](#修改页面)
+    - [添加课表、倒计日、布告栏内容](#添加课表倒计日布告栏内容)
+    - [修改背景页面](#修改背景页面)
+  - [添加程序到开机启动项](#添加程序到开机启动项)
+    - [设置开机自启动](#设置开机自启动)
+    - [关闭开机自启动](#关闭开机自启动)
+    - [遇到Bug的解决方案](#遇到bug的解决方案)
+      - [后端 Bug](#后端-bug)
+      - [前端 Bug](#前端-bug)
+- [附录](#附录)
+  - [关闭冰点还原](#关闭冰点还原)
+  - [config.ini](#configini)
+- [相关 Efforts](#相关-efforts)
+- [贡献者](#贡献者)
+- [License](#license)
+
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
+## 概览
+
+ClassBoard 以兼容性为核心（支持希沃老设备），兼顾自由性和可用性（自定义程度高，但是能够做到开箱即用），力求成为一款易用且好用的一体机壁纸软件。
+
+
+### 前世今生
+
+ClassBoardSharp 是 [ClassBoard](https://github.com/Candlest/ClassBoard) 的二代版本。
 
 ClassBoardSharp相对 ClassBoard 一代的缺点：
 
@@ -16,32 +51,6 @@ ClassBoardSharp相对 ClassBoard 一代的优点，是采用 HTML/JS/CSS 构建�
 - 页面可**几乎完全定制**
 - 页面可**随时修改**
 - 更**方便**、更**自由**地写出更好看的页面
-
----
-
-**README 目录**
-
-- [关于 ClassBoardSharp](#关于-classboardsharp)
-  - [运行演示](#运行演示)
-  - [使用教程](#使用教程)
-    - [获取程序](#获取程序)
-    - [运行程序](#运行程序)
-  - [配置教程](#配置教程)
-    - [修改页面](#修改页面)
-      - [添加课表、倒计日、布告栏内容](#添加课表倒计日布告栏内容)
-      - [修改背景页面](#修改背景页面)
-    - [添加程序到开机启动项](#添加程序到开机启动项)
-      - [设置开机自启动](#设置开机自启动)
-      - [关闭开机自启动](#关闭开机自启动)
-      - [遇到Bug的解决方案](#遇到bug的解决方案)
-        - [后端 Bug](#后端-bug)
-        - [前端 Bug](#前端-bug)
-  - [附录](#附录)
-    - [关闭冰点还原](#关闭冰点还原)
-    - [config.ini](#configini)
-  - [相关 Efforts](#相关-efforts)
-  - [贡献者](#贡献者)
-  - [License](#license)
 
 ## 运行演示
 
@@ -66,11 +75,15 @@ Qt 版本
 
 从 GitHub 的 [Release 页面](https://github.com/Candlest/ClassBoardSharp/releases) 下载
 
+国内地址：
+
+城通网盘： <a href="https://url97.ctfile.com/f/18976897-1341252272-030e49?p=2484" target="_blank">ClassBoard_1.0.24.0813_x86.7z</a>（访问密码：2484）<br/>
+
 ### 运行程序
 
 解压压缩包至文件夹。
 
-双击运行程序`ClassBoard.exe`，即可加载`Background/main.html`为桌面背景。
+双击运行程序 `ClassBoard.exe` 即可。
 
 ## 配置教程
 
@@ -94,28 +107,24 @@ Qt 版本
 
 #### 添加课表、倒计日、布告栏内容
 
-在托盘中点击`setting`按钮进入设置界面，或者手动修改下面的文件：
+在托盘中点击`设置`按钮进入设置界面，或者手动修改下面的文件：
 
-> 为尽量减少迁移成本，`class.js`和`event_cal.js`中`source`和`source_cal`与原先`kb.csv`和`djr.csv` ~~一致~~ 大致一致。
-> （因为原来的行与行之间需要用英语半角逗号 ‘,’替代）
-> 
-> 同时注意，所有的逗号请使用英文半角符号的逗号，是 `,` 而不是`，` 
-
-| 文件           | 备注 |
-| ------------ | --- |
-| class.txt | 第一行是表头，请勿修改。<br>目前。仅支持每天 1+5+3+2=11 节课，按照省实2024届的高三课表识别当前课程。<br>如果你有其他需求，暂时需要修改 Background/js/class.js 来实现，需要 web 相关基础。 |
-| events.txt   | 第一行是表头，请勿修改。<br>请按照：“事件，日期” 的格式添加条目。<br>e.g. 高考, 2024-06-07|
-| board.txt| 可以包含html标签，如\<strong>,\<ins>, \<del>等。<br>换行符请使用\<br/> 标签。<br>e.g:<br> 本周背诵：<br/>《梦游天姥吟留别》《赤壁赋》                                       |
+| 文件       | 内容                                                         |
+| ---------- | ------------------------------------------------------------ |
+| board.txt  | 使用 html 语法，对应着右下的告示栏                           |
+| events.txt | 倒计日，每行按照`事件,日期`的格式书写（本质上是个字符串数组，请不要忘记元素间的逗号） |
+| class.csv  | 第一行为表头，最后一行为每节课的时间（`mm:ss-mm:ss`格式），中间为课表 |
 
 修改以后，请在托盘中点击`重载`按钮重载应用。
 
 #### 修改背景页面
 
-修改背景图片以及其他样式，请至 `Background/css/custom.css` 。
+和修改网页一样哦。
 
 ### 添加程序到开机启动项
 
-> ⚠️ 请确认一体机是否开启冰点还原功能，如有则请在<u>征得管理员同意下</u>关闭，才能添加启动项。
+> [!WARNING]  
+> 请确认一体机是否开启冰点还原功能，如有则请在<u>征得管理员同意下</u>关闭，才能添加启动项。作者不负任何责任。
 > 
 > 关于冰点还原的关闭，参考[关闭冰点还原](#关闭冰点还原)一节。
 
@@ -145,7 +154,7 @@ ClassBoardSharp 采用 C# .NET Framework 4.6.1 + CefSharp 编写，如遇错误�
 
 如果您有一定 Web 开发基础，可以在程序运行时打开 http://localhost:14241/ 调试代码
 
-Debug 端口可以在 `Config/config.ini` 修改：
+Debug 端口可以在 `Config/config.ini` 或者设置页面修改：
 
 ```ini
 [CEF]
@@ -156,7 +165,8 @@ RemoteDebuggingPort=14241
 
 ### 关闭冰点还原
 
-> ⚠️ 建议备份相关文件
+> [!WARNING]  
+> 建议备份相关文件
 
 要删除冰点还原，需要在PE环境（或者安全模式）下，删除以下文件：
 
@@ -210,6 +220,6 @@ Github贡献者名单：
 
 欢迎任何的贡献！
 
-## [](https://github.com/Candlest/ClassBoard#license)License
+## License
 
 本项目使用 **MIT License** 开源。
