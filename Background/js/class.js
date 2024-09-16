@@ -5,7 +5,11 @@ function initClass() {
     // 解析 CSV 文件获取课程安排数据
     const { schedule, dailyClassCount, times } = parseCSV();
     // 获取当前星期几，0 表示周日，1 表示周一，以此类推
-    const currentDay = new Date().getDay();
+    let currentDay = new Date().getDay();
+    // 如果是周日 就要把currentDay改为7 防止下面的数组溢出
+    if(currentDay === 0) {
+        currentDay = 7
+    }
     // 根据当前星期获取今天的课程安排
     const todaySchedule = schedule[currentDay - 1]; // 0-based array index
     // 获取当前正在进行的课程索引
@@ -151,17 +155,22 @@ function updateClassColor(times) {
 
         // 检查当前时间是否在课程的开始和结束时间内
         console.log(currentTime, beginTime, endTime);
-
+        // 将第一个的 周几 加亮
+        document.getElementById('c_b' + 0).style.backgroundColor = '#3daee930';
+        document.getElementById('c_b' + 0).style.fontWeight = '450';
+        document.getElementById('c_b' + 0).style.lineHeight = '1';
         if (currentTime >= endTime) {
+            // 如果是i的话 会导致课程表错位
+            const j = i + 1;
             // 如果课程已经结束
-            document.getElementById('c_b' + i).style.backgroundColor = '#3daee930';
-            document.getElementById('c_b' + i).style.fontWeight = '450';
-            document.getElementById('c_b' + i).style.lineHeight = '1';
+            document.getElementById('c_b' + j).style.backgroundColor = '#3daee930';
+            document.getElementById('c_b' + j).style.fontWeight = '450';
+            document.getElementById('c_b' + j).style.lineHeight = '1';
         } else if (currentTime >= beginTime && currentTime < endTime) {
             // 如果课程正在进行中
-            document.getElementById('c_b' + i).style.backgroundColor = '#93cee97f';
-            document.getElementById('c_b' + i).style.color = 'white';
-            document.getElementById('c_b' + i).style.fontWeight = '600';
+            document.getElementById('c_b' + j).style.backgroundColor = '#93cee97f';
+            document.getElementById('c_b' + j).style.color = 'white';
+            document.getElementById('c_b' + j).style.fontWeight = '600';
         }
     }
 }
